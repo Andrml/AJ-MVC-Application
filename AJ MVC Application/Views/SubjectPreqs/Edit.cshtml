@@ -1,0 +1,63 @@
+﻿@model AJ_MVC_Application.Models.SubjectPreq
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>SubjectPreq</h4>
+<hr />
+        <form asp-action="Edit">
+    <div class="mb-3 row">
+        <label asp-for="SubjCode" class="col-sm-2 col-form-label">Subject Code</label>
+        <div class="col-sm-10">
+            <input type="text" placeholder="@Model.SubjCode" class="form-control" disabled />
+            
+            <input type="hidden" asp-for="SubjCode" />
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label asp-for="SubjPreCode" class="col-sm-2 col-form-label">Subject Requisite</label>
+        <div class="col-sm-10">
+            <span asp-validation-for="SubjPreCode" class="text-danger"></span>
+            <select class="form-select" asp-for="SubjPreCode" required>
+                <option disabled selected>Select Subject</option>
+                @{
+                    var subjects = ViewBag.Subject as List<Subject>;
+                    if (subjects != null)
+                    {
+                        foreach (var subjCode in subjects)
+                        {
+                            <option>
+                                @subjCode.SubjectCode
+                            </option>
+                        }
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label asp-for="SubjCategory" class="col-sm-2 col-form-label">First Name</label>
+        <div class="col-sm-10">
+            <span asp-validation-for="SubjCategory" class="text-danger"></span>
+            <select class="form-select" asp-for="SubjCategory" aria-expanded="false">
+                <option disabled selected>Select Category</option>
+                <option class="form-select" value="PreRequisite">Pre-Requisite</option>
+                <option class="form-select" value="CoRequisite">Co-Requisite</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+        </form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

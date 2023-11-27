@@ -1,0 +1,78 @@
+﻿@model IEnumerable<AJ_MVC_Application.Models.Subject>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Subject Code
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Units
+            </th>
+            <th>
+                Offering
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Subject Course
+            </th>
+            <th>
+                Curriculum Year
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectUnits)
+            </td>   
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectRegOffering)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectCourseCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectCurrCode)
+            </td>
+            <td>
+                    <a asp-controller="Subjects" asp-action="Edit" asp-route-subjectCode="@item.SubjectCode" , asp-route-subjectCategory="@item.SubjectCategory" , asp-route-subjectCourseCode="@item.SubjectCourseCode">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.SubjectCode">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.SubjectCode">Delete</a> 
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

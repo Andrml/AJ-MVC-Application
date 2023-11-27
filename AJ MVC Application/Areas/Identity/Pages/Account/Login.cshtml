@@ -1,0 +1,101 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Novabos</title>
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: url("https://img.freepik.com/premium-photo/futuristic-fantasy-night-landscape-with-abstract-islands-night-sky-with-space-galaxies_129911-2862.jpg?w=1060") no-repeat;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <center>
+        <div class="wrapper">
+
+            <form id="account" method="post">
+                <h1>Login</h1>
+                <div class="input-box">
+                    <input asp-for="Input.Email" type="text" placeholder="Username" required>
+                    <box-icon name='user'></box-icon>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="input-box">
+                    <input asp-for="Input.Password" type="password" placeholder="Password" required>
+                    <box-icon name='lock-alt' type='solid'></box-icon>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <div class="remember-forgot">
+                    <label>
+                        <input type="checkbox">Remember me
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                    <a href="#">Forget password</a>
+                </div>
+
+                <button type="submit" class="btn">Login</button>
+
+                @* <div class="register-link">
+                <p>Don't have an account?<a id="register" asp-area="Identity" asp-page="/Account/Register">Register</a></p>
+                </div> *@
+
+            </form>
+            <div class="col-md-6 col-md-offset-2">
+                <p>
+                </p>
+                <p></p>
+                <section>
+                    @{
+                        if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                        {
+
+                        }
+                        else
+                        {
+                            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                                <div>
+                                    <p>
+                                        @foreach (var provider in Model.ExternalLogins!)
+                                        {
+                                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                        }
+                                    </p>
+                                </div>
+                            </form>
+                        }
+                    }
+                </section>
+            </div>
+        </div>
+    </center>
+
+</body>
+</html>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

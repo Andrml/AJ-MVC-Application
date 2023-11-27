@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AJ MVC Application.props" />
+</Project>

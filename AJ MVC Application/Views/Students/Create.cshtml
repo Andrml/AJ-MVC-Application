@@ -1,0 +1,105 @@
+﻿@model Student
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Add Student</h4>
+<hr />
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <div class="mb-3 row">
+                    <label asp-for="StudentId" class="col-sm-2 col-form-label">Student ID</label>
+                    <div class="col-sm-10">
+                        <span asp-validation-for="StudentId" class="text-danger"></span>
+                        <input type="text" class="form-control" asp-for="StudentId">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label asp-for="StudentFName" class="col-sm-2 col-form-label">First Name</label>
+                    <div class="col-sm-10">
+                        <span asp-validation-for="StudentFName" class="text-danger"></span>
+                        <input type="text" class="form-control" asp-for="StudentFName">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label asp-for="StudentLName" class="col-sm-2 col-form-label">Last Name</label>
+                    <div class="col-sm-10">
+                        <span asp-validation-for="StudentLName" class="text-danger"></span>
+                        <input type="text" class="form-control" asp-for="StudentLName">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label asp-for="StudentMName" class="col-sm-2 col-form-label">Middle Name</label>
+                    <div class="col-sm-10">
+                        <span asp-validation-for="StudentMName" class="text-danger"></span>
+                        <input type="text" class="form-control" asp-for="StudentMName">
+                        
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label asp-for="StudentCourse" class="col-sm-2 col-form-label">Student Course</label>
+                    <div class="col-sm-10">
+                        <span asp-validation-for="StudentCourse" class="text-danger"></span>
+                        <select class="form-select" asp-for="StudentCourse"  required>
+                            <option disabled selected>Select Course</option>
+                    @{
+                        var courses = ViewBag.Course as List<Course>;
+                        if(courses != null)
+                        {
+                            foreach (var course in courses )
+                            {
+                                <option value="@course.CourseCode">
+                                    @course.CourseCode
+                                </option>
+                            }
+                        }
+                    }
+                        </select>
+                        
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label asp-for="StudentYear" class="col-sm-2 col-form-label">Year</label>
+                    <div class="col-sm-10">
+                        <span asp-validation-for="StudentYear" class="text-danger"></span>
+                        <select class="form-select" asp-for="StudentYear" aria-expanded="false">
+                            <option disabled selected>Select Year</option>
+                            <option class="form-select" value="1">1st year</option>
+                            <option class="form-select" value="2">2nd year</option>
+                            <option class="form-select" value="3">3rd year</option>
+                            <option class="form-select" value="4">4th year</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label asp-for="StudentRemarks" class="col-sm-2 col-form-label">Student Remarks</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" asp-for="StudentRemarks" aria-expanded="false">
+                            <option disabled selected>Choose Remarks</option>
+                            <option class="form-select" value="Old">Old</option>
+                            <option class="form-select" value="New">New</option>
+                            <option class="form-select" value="Shiftee">Shiftee</option>
+                            <option class="form-select" value="Returnee">Returnee</option>
+                            <option class="form-select" value="Transferee">Transferee</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="container text-center">
+                    <div class="row align-content-lg-end">
+                        <div class="col">
+                            <button type="submit" value="Submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

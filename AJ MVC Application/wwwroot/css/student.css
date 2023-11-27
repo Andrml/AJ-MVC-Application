@@ -1,0 +1,109 @@
+body {
+    font-family: Avenir;
+    background-image: url(bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    color: white;
+  }
+  
+  nav {
+    background-color: rgb(15, 8, 156);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    align-content: flex-end;
+    justify-content: space-between;
+    padding: 20px 0px;
+  }
+  
+  ul {
+    display: flex;
+    gap: 30px;
+    list-style-type: none;
+    vertical-align: auto;
+    color: white;
+    font-weight: 700;
+  }
+  
+  li {
+    display: inline;
+    cursor: pointer;
+  }
+  
+  li:hover {
+    transform: scale(1.1);
+  }
+  
+  
+  
+  #d-flex input[type="search"] {
+    height: 30px;
+    font-size: 20px;
+    width: 500px;
+    margin-top: 10px;
+  }
+  
+  #d-flex button {
+    height: 32px;
+    width: 32px;
+    margin-left: -5px;
+    background: LightGrey;
+    font-size: 17px;
+    border: none;
+    margin-top: 14px;
+    margin-right: 16px;
+    cursor: pointer;
+    
+  }
+  #button:hover {
+    transform: scale(1.1);
+  }
+  .styled-table {
+    border-collapse: collapse;
+    margin: 25px 150px;
+    font-size: 1em;
+    font-family: Avenir;
+    min-width: 300px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+  background-color: white;
+  color: black;
+  text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 12px;
+}
+.styled-table tbody tr {
+  border-bottom: 2px solid white;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid white;
+}
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+#addBtnContainer {
+  margin-left: 400px;
+}
+
+#addBtn {
+  font-family: Avenir;
+  font-weight: 700;
+  padding: 10px 50px;
+  text-transform: uppercase;
+  border: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#addBtn:hover {
+  transform: scale(1.1);
+}

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<AJ_MVC_Application.Models.Course>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Course</h1>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => course.CourseCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => course.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@course.CourseCode">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@course.CourseCode">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@course.CourseCode">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

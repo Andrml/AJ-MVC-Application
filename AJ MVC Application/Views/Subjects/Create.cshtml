@@ -1,0 +1,97 @@
+﻿@model AJ_MVC_Application.Models.Subject
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Subject</h4>
+<hr />
+
+ <form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div>
+        <div class="mb-3 row">
+            <label asp-for="SubjectCode" class="col-sm-2 col-form-label">Subject Code</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" asp-for="SubjectCode">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="SubjectDescription" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" asp-for="SubjectDescription">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="SubjectUnits" class="col-sm-2 col-form-label">Subject Units</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" asp-for="SubjectUnits">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="SubjectRegOffering" class="col-sm-2 col-form-label">Year Offering</label>
+            <div class="col-sm-10">
+                <select class="form-select" asp-for="SubjectRegOffering" aria-expanded="false">
+                    <option disabled selected>Category</option>
+                    <option class="form-select" value="1">1st Semester</option>
+                    <option class="form-select" value="2">2nd Semester</option>
+                </select>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="SubjectCategory" class="col-sm-2 col-form-label">Subject Category</label>
+            <div class="col-sm-10">
+                <select class="form-select" asp-for="SubjectCategory" aria-expanded="false">
+                    <option disabled selected>Category</option>
+                    <option class="form-select" value="LEC">Lecture</option>
+                    <option class="form-select" value="LAB">Laboratory</option>
+                </select>
+            </div>
+        </div>  
+        <div class="mb-3 row">
+            <label asp-for="SubjectCourseCode" class="col-sm-2 col-form-label">Subject Course</label>
+            <div class="col-sm-10">
+                <select class="form-select" asp-for="SubjectCourseCode" required>
+                    <option disabled selected>Select Course</option>
+                    @{
+                        var courses = ViewBag.Course as List<Course>;
+                        if (courses != null)
+                        {
+                            foreach (var course in courses)
+                            {
+                                <option value="@course.CourseCode">
+                                    @course.CourseCode
+                                </option>
+                            }
+                        }
+                    }
+                </select>
+
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="SubjectCurrCode" class="col-sm-2 col-form-label">Subject Curricculum</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" asp-for="SubjectCurrCode">
+            </div>
+        </div>
+        <div class="container text-center">
+            <div class="row align-content-lg-end">
+                <div class="col">
+                    <button type="submit" value="Submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        </form>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

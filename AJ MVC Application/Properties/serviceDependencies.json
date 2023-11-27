@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:AJ_MVC_ApplicationContextConnection"
+    }
+  }
+}

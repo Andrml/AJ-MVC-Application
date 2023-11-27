@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AJ_MVC_Application.Models.SubjectPreq>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjPreCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjCategory)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjPreCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjCategory)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SubjCode">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SubjCode">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SubjCode">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

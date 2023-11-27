@@ -1,0 +1,82 @@
+body {
+  background-image: url('bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Avenir;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
+}
+
+
+nav {
+  background-color: rgb(15, 8, 156);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  align-content: flex-end;
+  justify-content: space-between;
+  padding: 20px 0px;
+}
+
+ul {
+  display: flex;
+  gap: 25px;
+
+  list-style-type: none;
+  vertical-align: auto;
+  color: white;
+  font-weight: 700;
+}
+
+li {
+  display: inline;
+  cursor: pointer;
+}
+
+li:hover {
+  transform: scale(1.1);
+}
+
+#welcomeBanner h1{
+  display: flex;
+  padding-left: 510px;  
+  text-align: center;
+  
+  font-size: 4em;
+  font-weight: 1000;
+  color: white;
+}
+#welcomeBanner h2{
+  font-size: 4em;
+  font-weight: 1000;
+  color: white;
+  padding-right: 100px;
+  padding-left: 600px;
+}
+#welcomeBanner h3{
+  font-size: 3em;
+  font-weight: 1000;
+  color: white;
+  padding-right: 100px;
+  padding-left: 430px;
+}
+
+/* #loginBtnContainer {
+  margin: -10px 20px 10px 0px;
+}
+
+#loginBtn {
+  font-family: Avenir;
+  font-weight: 700;
+  padding: 10px 50px;
+  text-transform: uppercase;
+  border: 5px solid rgb(71, 2, 139);
+  border-radius: 32px;
+  cursor: pointer;
+}
+
+#loginBtn:hover {
+  transform: scale(1.1);
+} */
